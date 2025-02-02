@@ -9,9 +9,12 @@ const start = async (req, res) => {
     await connectDB(process.env.MONGO_URI);
     await Product.deleteMany();
     await Product.create(jsonProduct);
+
     console.log("SUCCESS");
+    process.exit(0);
   } catch (error) {
     console.log(error, "There was an Error");
+    process.exit(1);
   }
 };
 
